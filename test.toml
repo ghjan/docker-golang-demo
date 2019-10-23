@@ -1,1 +1,2 @@
 listen = ":8082"
+ginmode = "release"

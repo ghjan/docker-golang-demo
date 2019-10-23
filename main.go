@@ -3,6 +3,7 @@ package main
 import (
 	"docker-golang-demo/config"
 	"flag"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-xweb/log"
 	"net/http"
@@ -26,7 +27,13 @@ func main() {
 		log.Errorf("UnmarshalConfig: err:%v\n", err)
 		return
 	}
+	address := tomlConfig.GetListenAddr()
+	if tomlConfig.GetGinMode() == "release" {
+		fmt.Println("to set gin mode to release mode")
+		gin.SetMode(gin.ReleaseMode)
+		fmt.Printf("Listening and serving HTTP on %s\n", address)
+	}
 	router := gin.New()
 	router.GET("/", indexHandler)
-	router.Run(tomlConfig.GetListenAddr())
+	router.Run(address)
 }

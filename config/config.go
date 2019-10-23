@@ -6,7 +6,8 @@ import (
 
 // Config 对应配置文件结构
 type Config struct {
-	Listen string `toml:"listen"`
+	Listen  string `toml:"listen"`
+	GinMode string `toml:"ginmode"`
 }
 
 // UnmarshalConfig 解析toml配置
@@ -21,4 +22,8 @@ func UnmarshalConfig(tomlfile string) (*Config, error) {
 // GetListenAddr 监听地址
 func (c Config) GetListenAddr() string {
 	return c.Listen
+}
+
+func (c Config) GetGinMode() string {
+	return c.GinMode
 }
