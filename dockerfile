@@ -1,10 +1,10 @@
 FROM scratch
 
-MAINTAINER  "hcf"
+MAINTAINER  "david"
 
 WORKDIR .
-ADD main .
+ADD docker-golang-demo .
 ADD test.toml .
 
 EXPOSE 8082
-CMD ["./main","-config=./test.toml"]
+CMD ["./docker-golang-demo","-config=./test.toml"]

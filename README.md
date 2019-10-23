@@ -13,10 +13,10 @@
 ## 编写dockerfile
 
 首先编译main.go 生成二进制文件，该二进制文件可以直接在相应的linux服务器下运行。
-我这里使用如下指令，编译后会多出一个main文件
+我这里使用如下指令，编译后会多出一个docker-golang-demo文件
 
 ```
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build .
 ```
 
 可以根据自己需要编译的平台更改
@@ -32,14 +32,14 @@ EXPOSE 这是对方开发的端口，可修改，我这使用8082
 CMD 附带配置文件test.toml 运行当前目录下的main  
 
 ```
-MAINTAINER  "hcf"
+MAINTAINER  "david"
 
 WORKDIR .
 ADD main .
 ADD test.toml .
 
 EXPOSE 8082
-CMD ["./main","-config=./test.toml"]
+CMD ["./docker-golang-demo","-config=./test.toml"]
 ```
 
 容器的配置就完成了  

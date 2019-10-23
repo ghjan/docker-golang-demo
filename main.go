@@ -1,13 +1,11 @@
 package main
 
 import (
+	"docker-golang-demo/config"
 	"flag"
-	"net/http"
-
-	"test/dockertest/config"
-
 	"github.com/gin-gonic/gin"
 	"github.com/go-xweb/log"
+	"net/http"
 )
 
 var (
